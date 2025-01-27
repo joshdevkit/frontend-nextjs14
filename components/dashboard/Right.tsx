@@ -1,8 +1,8 @@
 export default function Right() {
   return (
-    <aside className="w-1/4 bg-neutral-50 dark:bg-neutral-900 p-6 hidden lg:block rounded-r-lg">
+    <aside className="w-1/4 dark:bg-neutral-900 p-2 hidden lg:block rounded-r-lg">
       <div className="mb-6">
-        <h2 className="font-bold text-lg mb-4">Friend Requests (2)</h2>
+        <h2 className="font-bold text-lg mb-4 ml-1">Friend Requests (2)</h2>
         {[1, 2].map((request) => (
           <div
             key={request}

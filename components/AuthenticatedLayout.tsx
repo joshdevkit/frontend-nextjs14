@@ -29,12 +29,14 @@ const AuthenticatedLayout: React.FC<AuthenticatedLayoutProps> = ({
   const dispatch = useDispatch();
   const token = useSelector(getToken);
   const user = useSelector(getUser);
+  const [isSticky, setIsSticky] = useState(false);
 
   useEffect(() => {
     if (!token && !user) {
       router.push("/login");
     }
   }, [token, user, router]);
+
   const toggleTheme = () => {
     setTheme((prevTheme) => (prevTheme === "dark" ? "light" : "dark"));
   };
@@ -50,14 +52,28 @@ const AuthenticatedLayout: React.FC<AuthenticatedLayoutProps> = ({
     }
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsSticky(window.scrollY > 10); // Customize scroll threshold
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <>
       <header
-        className="w-full text-gray-800 dark:text-gray-200 
+        className={`w-full text-gray-800 dark:text-gray-200 
         bg-white/30 dark:bg-gray-950/30 
         backdrop-blur-md 
-        z-10 
-        "
+        border-b border-neutral-200 dark:border-neutral-700
+        shadow-lg
+        z-10
+        ${isSticky ? "fixed top-0 left-0" : "sticky top-0"}`}
       >
         <div className="h-16 container flex items-center">
           <MainNavigation />
@@ -132,7 +148,7 @@ const AuthenticatedLayout: React.FC<AuthenticatedLayoutProps> = ({
           </div>
         </div>
       </header>
-      <div>{children}</div>
+      {children}
     </>
   );
 };
