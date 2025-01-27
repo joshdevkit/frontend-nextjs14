@@ -3,7 +3,9 @@ export type PostTypes = {
   content: string;
   images: Array<string>;
   videos: Array<string>;
+  createdAt: string;
   user: {
+    _id: string;
     name: string;
   };
 };

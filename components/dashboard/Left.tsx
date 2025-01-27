@@ -5,10 +5,10 @@ export default function Left() {
   const user = useSelector(getUser);
 
   return (
-    <aside className="w-1/4 bg-neutral-50 dark:bg-neutral-900 p-6 hidden lg:block rounded-l-lg">
-      <div className="container ml-24">
-        <div className="flex items-center space-x-4 mb-6">
-          <div className="w-12 h-12 rounded-full bg-gray-300 flex items-center justify-center">
+    <aside className="w-1/4 dark:bg-neutral-900 p-2 hidden lg:block rounded-l-lg">
+      <div className="container">
+        <div className="flex items-center space-x-4 mb-6 mt-2">
+          <div className="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center">
             <img
               src="https://github.com/shadcn.png"
               alt="User Avatar"
@@ -17,7 +17,6 @@ export default function Left() {
           </div>
           <div>
             <p className="font-bold text-lg">{user?.name}</p>
-            <p className="text-sm text-gray-500">{user?.email}</p>
           </div>
         </div>
         <div>
